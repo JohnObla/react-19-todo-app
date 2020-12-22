@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Todo from '../Todo/Todo';
 import NewTodoForm from '../NewTodoForm/NewTodoForm';
+import InlineEdit from '../InlineEdit/InlineEdit';
 
 class TodoList extends Component {
   state = {
@@ -26,21 +27,39 @@ class TodoList extends Component {
       }),
     }));
 
+  submitInlineEdit = (id, task) => {
+    this.setState(state => ({
+      todos: state.todos.map(todo => {
+        if (todo.id !== id) return todo;
+
+        todo.task = task;
+        todo.isEditing = false;
+        return todo;
+      }),
+    }));
+  };
+
   destroyTodo = id =>
     this.setState(state => ({
       todos: state.todos.filter(todo => todo.id !== id),
     }));
 
   renderTodoList = () =>
-    this.state.todos.map(todo => (
-      <Todo
-        key={todo.id}
-        id={todo.id}
-        task={todo.task}
-        destroyTodo={this.destroyTodo}
-        editTodo={this.editTodo}
-      />
-    ));
+    this.state.todos.map(todo => {
+      if (todo.isEditing) {
+        return <InlineEdit id={todo.id} submitForm={this.submitInlineEdit} />;
+      }
+
+      return (
+        <Todo
+          key={todo.id}
+          id={todo.id}
+          task={todo.task}
+          destroyTodo={this.destroyTodo}
+          editTodo={this.editTodo}
+        />
+      );
+    });
 
   render() {
     return (

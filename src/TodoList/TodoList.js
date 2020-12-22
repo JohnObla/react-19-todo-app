@@ -12,7 +12,13 @@ class TodoList extends Component {
   };
 
   render() {
-    return <div>{this.renderTodoList()}</div>;
+    return (
+      <div>
+        <h1>Todo List!</h1>
+        <h5>A Simple React Todo List App.</h5>
+        {this.renderTodoList()}
+      </div>
+    );
   }
 }
 

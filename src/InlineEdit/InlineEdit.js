@@ -13,7 +13,6 @@ class InlineEdit extends Component {
   handleCancel = evt => this.props.cancelEdit();
 
   render() {
-    console.log(this.state.task);
     return (
       <form onSubmit={this.handleSubmit}>
         <input

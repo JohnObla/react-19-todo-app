@@ -12,9 +12,19 @@ class TodoList extends Component {
     this.setState({ todos: updatedTodos });
   };
 
+  destroyTodo = id =>
+    this.setState(state => ({
+      todos: state.todos.filter(todo => todo.id !== id),
+    }));
+
   renderTodoList = () =>
     this.state.todos.map(todo => (
-      <Todo key={todo.id} id={todo.id} task={todo.task} />
+      <Todo
+        key={todo.id}
+        id={todo.id}
+        task={todo.task}
+        destroyTodo={this.destroyTodo}
+      />
     ));
 
   renderNewTodoForm = () => <NewTodoForm submitForm={this.addTodo} />;

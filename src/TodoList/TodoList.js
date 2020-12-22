@@ -6,12 +6,18 @@ import NewTodoForm from '../NewTodoForm/NewTodoForm';
 class TodoList extends Component {
   state = { todos: [{ task: 'Get the dog', id: uuidv4() }] };
 
+  addTodo = task => {
+    const updatedTodos = [...this.state.todos];
+    updatedTodos.push({ task, id: uuidv4() });
+    this.setState({ todos: updatedTodos });
+  };
+
   renderTodoList = () =>
     this.state.todos.map(todo => (
       <Todo key={todo.id} id={todo.id} task={todo.task} />
     ));
 
-  renderNewTodoForm = () => <NewTodoForm />;
+  renderNewTodoForm = () => <NewTodoForm submitForm={this.addTodo} />;
 
   render() {
     return (

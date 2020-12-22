@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 class NewTodoForm extends Component {
   state = { task: '' };
 
-  handleChange = evt => {
-    this.setState({ task: evt.target.value });
+  handleSubmit = evt => {
+    evt.preventDefault();
+    this.props.submitForm(this.state.task);
+    this.setState({ task: '' });
   };
+
+  handleChange = evt => this.setState({ task: evt.target.value });
 
   render() {
     return (

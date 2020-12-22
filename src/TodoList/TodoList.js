@@ -47,7 +47,13 @@ class TodoList extends Component {
   renderTodoList = () =>
     this.state.todos.map(todo => {
       if (todo.isEditing) {
-        return <InlineEdit id={todo.id} submitForm={this.submitInlineEdit} />;
+        return (
+          <InlineEdit
+            key={todo.id}
+            id={todo.id}
+            submitForm={this.submitInlineEdit}
+          />
+        );
       }
 
       return (

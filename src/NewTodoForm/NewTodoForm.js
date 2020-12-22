@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 class NewTodoForm extends Component {
   state = { task: '' };
 
+  handleChange = evt => {
+    this.setState({ task: evt.target.value });
+  };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>

@@ -1,0 +1,7 @@
+.Todo-close {
+  margin-left: 10px;
+}
+
+.Todo-close:hover {
+  cursor: pointer;
+}

@@ -5,6 +5,9 @@ class NewTodoForm extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
+
+    if (!this.state.task) return;
+
     this.props.submitForm(this.state.task);
     this.setState({ task: '' });
   };

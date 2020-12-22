@@ -6,17 +6,25 @@ import NewTodoForm from '../NewTodoForm/NewTodoForm';
 class TodoList extends Component {
   state = {
     todos: [
-      { task: 'Get the dog', id: uuidv4() },
-      { task: 'Do chores', id: uuidv4() },
-      { task: 'Eat dinner', id: uuidv4() },
+      { task: 'Get the dog', id: uuidv4(), isEditing: false },
+      { task: 'Do chores', id: uuidv4(), isEditing: false },
+      { task: 'Eat dinner', id: uuidv4(), isEditing: false },
     ],
   };
 
   addTodo = task => {
     const updatedTodos = [...this.state.todos];
-    updatedTodos.push({ task, id: uuidv4() });
+    updatedTodos.push({ task, id: uuidv4(), isEditing: false });
     this.setState({ todos: updatedTodos });
   };
+
+  editTodo = id =>
+    this.setState(state => ({
+      todos: state.todos.map(todo => {
+        todo.isEditing = todo.id === id;
+        return todo;
+      }),
+    }));
 
   destroyTodo = id =>
     this.setState(state => ({
@@ -30,6 +38,7 @@ class TodoList extends Component {
         id={todo.id}
         task={todo.task}
         destroyTodo={this.destroyTodo}
+        editTodo={this.editTodo}
       />
     ));
 

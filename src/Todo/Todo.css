@@ -1,7 +1,7 @@
-.Todo-close {
+.Todo-button {
   margin-left: 10px;
 }
 
-.Todo-close:hover {
+.Todo-button:hover {
   cursor: pointer;
 }

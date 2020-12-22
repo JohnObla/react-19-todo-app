@@ -11,6 +11,7 @@ class InlineEdit extends Component {
   handleChange = evt => this.setState({ task: evt.target.value });
 
   render() {
+    console.log(this.state.task);
     return (
       <form onSubmit={this.handleSubmit}>
         <input

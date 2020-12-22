@@ -50,6 +50,7 @@ class TodoList extends Component {
         return (
           <InlineEdit
             key={todo.id}
+            task={todo.task}
             id={todo.id}
             submitForm={this.submitInlineEdit}
           />

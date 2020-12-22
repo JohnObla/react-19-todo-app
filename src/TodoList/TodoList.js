@@ -27,15 +27,13 @@ class TodoList extends Component {
       />
     ));
 
-  renderNewTodoForm = () => <NewTodoForm submitForm={this.addTodo} />;
-
   render() {
     return (
       <div>
         <h1>Todo List!</h1>
         <h5>A Simple React Todo List App.</h5>
         {this.renderTodoList()}
-        {this.renderNewTodoForm()}
+        <NewTodoForm submitForm={this.addTodo} />
       </div>
     );
   }

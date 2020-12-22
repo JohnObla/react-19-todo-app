@@ -39,6 +39,14 @@ class TodoList extends Component {
     }));
   };
 
+  cancelInlineEdit = () =>
+    this.setState(state => ({
+      todos: state.todos.map(todo => {
+        todo.isEditing = false;
+        return todo;
+      }),
+    }));
+
   destroyTodo = id =>
     this.setState(state => ({
       todos: state.todos.filter(todo => todo.id !== id),
@@ -53,6 +61,7 @@ class TodoList extends Component {
             task={todo.task}
             id={todo.id}
             submitForm={this.submitInlineEdit}
+            cancelEdit={this.cancelInlineEdit}
           />
         );
       }

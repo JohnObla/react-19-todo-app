@@ -10,6 +10,8 @@ class InlineEdit extends Component {
 
   handleChange = evt => this.setState({ task: evt.target.value });
 
+  handleCancel = evt => this.props.cancelEdit();
+
   render() {
     console.log(this.state.task);
     return (
@@ -20,7 +22,10 @@ class InlineEdit extends Component {
           value={this.state.task}
           onChange={this.handleChange}
         />
-        <button>Save</button>
+        <button type="submit">Save</button>
+        <button type="button" onClick={this.handleCancel}>
+          Cancel
+        </button>
       </form>
     );
   }

@@ -4,7 +4,13 @@ import Todo from '../Todo/Todo';
 import NewTodoForm from '../NewTodoForm/NewTodoForm';
 
 class TodoList extends Component {
-  state = { todos: [{ task: 'Get the dog', id: uuidv4() }] };
+  state = {
+    todos: [
+      { task: 'Get the dog', id: uuidv4() },
+      { task: 'Do chores', id: uuidv4() },
+      { task: 'Eat dinner', id: uuidv4() },
+    ],
+  };
 
   addTodo = task => {
     const updatedTodos = [...this.state.todos];
